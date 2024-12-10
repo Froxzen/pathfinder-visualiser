@@ -3,6 +3,7 @@ import { Grid } from "./components/Grid";
 import { PathfindingProvider } from "./context/PathfindingContext";
 import { SpeedProvider } from "./context/SpeedContext";
 import { TileProvider } from "./context/TileContext";
+import { Nav } from "./components/Nav";
 
 function App() {
 	const isVisualisationRunningRef = useRef(false);
@@ -12,6 +13,7 @@ function App() {
 			<TileProvider>
 				<SpeedProvider>
 					<div className="h-screen w-screen flex flex-col">
+						<Nav/>
 						<Grid isVisualisationRunningRef={isVisualisationRunningRef} />
 					</div>
 				</SpeedProvider>
@@ -21,4 +23,4 @@ function App() {
 }
 
 export default App;
-// 38:39
+// 46:45
