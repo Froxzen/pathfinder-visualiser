@@ -1,4 +1,4 @@
-# Pathfinder Visualiser
+# Pathfinding Algorithm Visualiser
 
 An app to visualise how different pathfinding and maze generation algorithms work.
 
