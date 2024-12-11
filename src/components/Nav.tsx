@@ -9,7 +9,7 @@ import {
 	SPEEDS,
 } from "../utils/constants";
 import { resetGrid } from "../utils/resetGrid";
-import { AlgorithmType, MazeType } from "../utils/types";
+import { AlgorithmType, MazeType, SpeedType } from "../utils/types";
 import { Select } from "./Select";
 import { runMazeAlgorithm } from "../utils/runMazeAlgorithm";
 import { useSpeed } from "../hooks/useSpeed";
@@ -34,7 +34,7 @@ export function Nav({
 		setAlgorithm,
 	} = usePathfinding();
 	const { startTile, endTile } = useTile();
-	const { speed } = useSpeed();
+	const { speed, setSpeed } = useSpeed();
 
 	const handleGenerateMaze = (maze: MazeType) => {
 		if (maze === "NONE") {
@@ -105,6 +105,14 @@ export function Nav({
 						options={PATHFINDING_ALGORITHMS}
 						onChange={e => {
 							setAlgorithm(e.target.value as AlgorithmType);
+						}}
+					/>
+					<Select
+						label="Speed"
+						value={speed}
+						options={SPEEDS}
+						onChange={e => {
+							setSpeed(parseInt(e.target.value) as SpeedType);
 						}}
 					/>
 					<PlayButton
