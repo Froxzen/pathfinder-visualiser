@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Pathfinder Visualiser
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An app to visualise how different pathfinding and maze generation algorithms work.
 
-Currently, two official plugins are available:
+## Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can view the live demo of the project [here](https://Froxzen.github.io/pathfinder-visualiser/).
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Visualize different pathfinding algorithms such as BFS, DFS, Dijkstra's, and A*.
+- Create mazes using different maze generation algorithms.
+- Adjust the speed of the visualization.
+- Interactive grid where you can set start and end points, and add walls.
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React: A JavaScript library for building user interfaces.
+- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+- Tailwind CSS: A utility-first CSS framework.
+- Vite: A fast build tool and development server.
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Froxzen/pathfinder-visualiser.git
+   cd pathfinder-visualiser
+   ```
+   
+2. Install the dependencies:
+```sh
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+4. Start the development server:
+```sh
+npm run dev
 ```
+
+6. Open your browser and navigate to ```http://localhost:3000```
+
+## License
+This project is licensed under the MIT License.
