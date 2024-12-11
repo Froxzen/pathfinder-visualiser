@@ -1,4 +1,4 @@
-import { getUnTraversedNeighbours } from "../../../utils/getUntraversedNeighbours";
+import { getUntraversedNeighbours } from "../../../utils/getUntraversedNeighbours";
 import { isEqual } from "../../../utils/helpers";
 import { isInQueue } from "../../../utils/isInQueue";
 import { GridType, TileType } from "../../../utils/types";
@@ -18,7 +18,7 @@ export const bfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
 		traversedTiles.push(tile);
 		if (isEqual(tile, endTile)) break;
 
-		const neighbors = getUnTraversedNeighbours(grid, tile);
+		const neighbors = getUntraversedNeighbours(grid, tile);
 		for (let i = 0; i < neighbors.length; i++) {
 			if (!isInQueue(neighbors[i], unTraversed)) {
 				const neighbor = neighbors[i];
