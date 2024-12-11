@@ -28,7 +28,7 @@ export const resetGrid = ({
 
 			if (!isEqual(startTile, tile) && !isEqual(endTile, tile)) {
 				const tileElement = document.getElementById(
-					`tile-${tile.row}-${tile.col}`
+					`${tile.row}-${tile.col}`
 				);
 
 				if (tileElement) {
