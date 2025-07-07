@@ -72,16 +72,15 @@ export function Nav({
 			endTile,
 		});
 
-		animatePath(traversedTiles, path, startTile, endTile, speed);
 		setIsDisabled(true);
 		isVisualisationRunningRef.current = true;
-		setTimeout(() => {
+		animatePath(traversedTiles, path, startTile, endTile, speed, () => {
 			const newGrid = grid.slice();
 			setGrid(newGrid);
 			setIsGraphVisualised(true);
 			setIsDisabled(false);
 			isVisualisationRunningRef.current = false;
-		}, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
+		});
 	};
 
 	return (

@@ -1,7 +1,7 @@
 import { AlgorithmSelectType, MazeSelectType, SpeedSelectType } from "./types";
 
-export const MAX_ROWS = 22;
-export const MAX_COLS = 32;
+export const MAX_ROWS = 30;
+export const MAX_COLS = 40;
 
 export const START_TILE_CONFIGURATION = {
 	row: 1,
