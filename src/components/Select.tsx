@@ -80,10 +80,10 @@ export function Select({
 						<button
 							key={option.value}
 							type="button"
-							className={`w-full text-left px-4 py-1 text-base rounded-lg transition font-medium ${
+							className={`w-full text-left px-4 py-1 text-sm sm:text-base rounded-lg transition font-medium ${
 								value === option.value
 									? "bg-blue-400/30 text-blue-100"
-									: "hover:bg-black/80 text-gray-100"
+									: "hover:bg-blue-500/40 hover:text-blue-100 text-gray-100"
 							}`}
 							onClick={(e) => {
 								onChange({ target: { value: option.value } });
