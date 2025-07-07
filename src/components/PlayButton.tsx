@@ -19,7 +19,7 @@ export function PlayButton({
 			className={`disabled:pointer-events-none disabled:opacity-50 transition-all duration-200 rounded-full p-4 shadow-xl border-none focus:outline-none focus:ring-4 focus:ring-blue-400/50
 				${
 					!isDisabled
-						? "bg-gradient-to-tr from-green-500 to-blue-500 hover:from-green-400 hover:to-blue-400 hover:shadow-green-400/30 hover:scale-105"
+						? "bg-gradient-to-tr from-purple-400 via-blue-400 to-blue-600 hover:from-purple-300 hover:to-blue-400 hover:shadow-blue-400/30 hover:scale-105"
 						: "bg-gray-700"
 				}
 			`}
