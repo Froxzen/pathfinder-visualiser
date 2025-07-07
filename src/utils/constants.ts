@@ -1,11 +1,11 @@
 import { AlgorithmSelectType, MazeSelectType, SpeedSelectType } from "./types";
 
-export const MAX_ROWS = 30;
-export const MAX_COLS = 40;
+export const MAX_ROWS = 31;
+export const MAX_COLS = 41;
 
 export const START_TILE_CONFIGURATION = {
-	row: 1,
-	col: 1,
+	row: Math.max(1, Math.min(MAX_ROWS - 2, 1)),
+	col: Math.max(1, Math.min(MAX_COLS - 2, 1)),
 	isEnd: false,
 	isWall: false,
 	isPath: false,
@@ -16,8 +16,8 @@ export const START_TILE_CONFIGURATION = {
 };
 
 export const END_TILE_CONFIGURATION = {
-	row: MAX_ROWS - 2,
-	col: MAX_COLS - 2,
+	row: Math.max(1, Math.min(MAX_ROWS - 2, MAX_ROWS - 2)),
+	col: Math.max(1, Math.min(MAX_COLS - 2, MAX_COLS - 2)),
 	isEnd: false,
 	isWall: false,
 	isPath: false,
