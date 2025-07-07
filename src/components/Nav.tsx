@@ -2,10 +2,8 @@ import { MutableRefObject, useState } from "react";
 import { usePathfinding } from "../hooks/usePathfinding";
 import { useTile } from "../hooks/useTile";
 import {
-	EXTENDED_SLEEP_TIME,
 	MAZES,
 	PATHFINDING_ALGORITHMS,
-	SLEEP_TIME,
 	SPEEDS,
 } from "../utils/constants";
 import { resetGrid } from "../utils/resetGrid";
@@ -36,7 +34,6 @@ export function Nav({
 	} = usePathfinding();
 	const { startTile, endTile } = useTile();
 	const { speed, setSpeed } = useSpeed();
-	const [showBubble, setShowBubble] = useState(false);
 
 	const handleGenerateMaze = (maze: MazeType) => {
 		if (maze === "NONE") {
@@ -96,27 +93,13 @@ export function Nav({
 			<div className="w-full max-w-4xl flex items-center justify-between bg-white/5 backdrop-blur-md rounded-2xl shadow-lg border border-white/10 px-4 py-3 gap-4">
 				<div className="flex items-center gap-3">
 					<div className="relative flex items-center justify-center">
-						<div
-							className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-400 via-blue-400 to-blue-600 p-0.5 flex items-center justify-center cursor-pointer"
-							onClick={() => setShowBubble((v) => !v)}
-							tabIndex={0}
-							aria-label="Show creator info"
-							onBlur={() => setShowBubble(false)}
-						>
+						<div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-400 via-blue-400 to-blue-600 p-0.5 flex items-center justify-center">
 							<img
 								src={locationIcon}
 								alt="Location Icon"
 								className="w-6 h-6 sm:w-8 sm:h-8 object-contain select-none filter brightness-0 invert"
 							/>
 						</div>
-						{showBubble && (
-							<div className="absolute left-auto right-full top-1/2 -translate-y-1/2 mr-3 z-50 animate-bubble-in">
-								<div className="relative bg-white/80 backdrop-blur-md rounded-xl px-4 py-2 text-sm text-gray-900 shadow-lg border border-white/40">
-									Made by Harvard Chong
-									<span className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white/80 border-t border-r border-white/40 rotate-45"></span>
-								</div>
-							</div>
-						)}
 					</div>
 					<h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm tracking-tight">
 						Pathfinding Visualizer
@@ -157,15 +140,6 @@ export function Nav({
 					/>
 				</div>
 			</div>
-			<style>{`
-			@keyframes bubble-in {
-				0% { opacity: 0; transform: translateX(-16px) scale(0.95); }
-				100% { opacity: 1; transform: translateX(0) scale(1); }
-			}
-			.animate-bubble-in {
-				animation: bubble-in 0.25s cubic-bezier(.4,0,.2,1);
-			}
-			`}</style>
 		</div>
 	);
 }
