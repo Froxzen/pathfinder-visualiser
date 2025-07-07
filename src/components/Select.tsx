@@ -85,7 +85,7 @@ export function Select({
 									? "bg-blue-400/30 text-blue-100"
 									: "hover:bg-blue-500/40 hover:text-blue-100 text-gray-100"
 							}`}
-							onClick={(e) => {
+							onClick={(_) => {
 								onChange({ target: { value: option.value } });
 								setOpen(false);
 							}}

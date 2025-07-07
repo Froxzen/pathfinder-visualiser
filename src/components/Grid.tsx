@@ -14,10 +14,12 @@ export function Grid({
 	const [isMouseDown, setIsMouseDown] = useState(false);
 
 	const handleMouseDown = (row: number, col: number) => {
-		if (isVisualisationRunningRef.current || checkIfStartOrEnd(row, col)) {
+		if (isVisualisationRunningRef.current) {
 			return;
 		}
-
+		if (checkIfStartOrEnd(row, col)) {
+			return;
+		}
 		setIsMouseDown(true);
 		const newGrid = createNewGrid(grid, row, col);
 		setGrid(newGrid);

@@ -31,10 +31,12 @@ export const bfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
 
 	const path = [];
 	let tile = grid[endTile.row][endTile.col];
-    while (tile !== null) {
-        tile.isPath = true;
-        path.unshift(tile);
-        tile = tile.parent!;
-    }
-    return {traversedTiles, path};
+	if (tile.parent || isEqual(tile, startTile)) {
+		while (tile !== null) {
+			tile.isPath = true;
+			path.unshift(tile);
+			tile = tile.parent!;
+		}
+	}
+	return { traversedTiles, path };
 };
