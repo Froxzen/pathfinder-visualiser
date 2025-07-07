@@ -4,6 +4,13 @@ import { transform } from "typescript";
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		screens: {
+			sm: "640px",
+			md: "768px",
+			lg: "1024px",
+			xl: "1600px",
+			"2xl": "2000px",
+		},
 		extend: {
 			keyframes: {
 				traversed: {

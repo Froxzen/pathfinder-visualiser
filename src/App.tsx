@@ -22,16 +22,16 @@ function App() {
 							<div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-blue-700 opacity-20 rounded-full blur-3xl" />
 						</div>
 						<div className="relative z-10 w-full max-w-6xl px-2 sm:px-6 flex flex-col items-center">
-							<Nav
-								isVisualisationRunningRef={
-									isVisualisationRunningRef
-								}
-							/>
-							<Grid
-								isVisualisationRunningRef={
-									isVisualisationRunningRef
-								}
-							/>
+						<Nav
+							isVisualisationRunningRef={
+								isVisualisationRunningRef
+							}
+						/>
+						<Grid
+							isVisualisationRunningRef={
+								isVisualisationRunningRef
+							}
+						/>
 						</div>
 					</div>
 				</SpeedProvider>
