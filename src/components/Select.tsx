@@ -72,7 +72,7 @@ export function Select({
 				<div
 					ref={menuRef}
 					tabIndex={-1}
-					className="absolute z-50 mt-2 w-full rounded-xl bg-white/20 backdrop-blur-2xl shadow-2xl border border-white/30 py-1 animate-fadeIn"
+					className="absolute left-0 right-0 top-full z-50 w-full rounded-xl bg-white/20 backdrop-blur-2xl shadow-2xl border border-white/30 py-1 animate-fadeIn"
 					role="listbox"
 					onKeyDown={handleKeyDown}
 				>
