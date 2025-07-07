@@ -15,12 +15,19 @@ export function PlayButton({
 		<button
 			disabled={isDisabled}
 			onClick={handlerRunVisualiser}
-			className="disabled:pointer-events-none disabled:opactity-50 transition ease-in rounded-full p-2.5 shadow-md bg-green-500 hover:bg-green-600 border-none active:ring-green-300 focus:outline-none focus:ring focus:ring-green-300 focus: ring-opacity-30"
+			aria-label={isGraphVisualised ? "Reset" : "Start Visualisation"}
+			className={`disabled:pointer-events-none disabled:opacity-50 transition-all duration-200 rounded-full p-4 shadow-xl border-none focus:outline-none focus:ring-4 focus:ring-blue-400/50
+				${
+					!isDisabled
+						? "bg-gradient-to-tr from-green-500 to-blue-500 hover:from-green-400 hover:to-blue-400 hover:shadow-green-400/30 hover:scale-105"
+						: "bg-gray-700"
+				}
+			`}
 		>
 			{isGraphVisualised ? (
-				<GrPowerReset className="w-5 h-5" />
+				<GrPowerReset className="w-7 h-7" />
 			) : (
-				<BsFillPlayFill className="w-5 h-5" />
+				<BsFillPlayFill className="w-7 h-7 animate-pulse" />
 			)}
 		</button>
 	);

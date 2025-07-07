@@ -81,22 +81,30 @@ export function Nav({
 			setIsGraphVisualised(true);
 			setIsDisabled(false);
 			isVisualisationRunningRef.current = false;
-		}, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find(s => s.value === speed)!.value);
+		}, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
 	};
 
 	return (
-		<div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-600 sm:px-5 px-0">
-			<div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem]">
-				<h1 className="lg:flex hidden w-[40%] text-2xl pl-1">
-					Pathfinding Visualizer
-				</h1>
-				<div className="flex sm:items-end items-center justify-start sm:justify-between sm:flex-row flex-col sm:space-y-0 space-y-3 sm:py-0 py-4 sm:space-x-4">
+		<div className="w-full flex items-center justify-center py-4 px-2 sm:px-6 z-20">
+			<div className="w-full max-w-4xl flex items-center justify-between bg-white/5 backdrop-blur-md rounded-2xl shadow-lg border border-white/10 px-4 py-3 gap-4">
+				<div className="flex items-center gap-3">
+					<span
+						className="text-3xl select-none"
+						aria-label="Pathfinder"
+					>
+						🧭
+					</span>
+					<h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm tracking-tight">
+						Pathfinding Visualizer
+					</h1>
+				</div>
+				<div className="flex flex-col sm:flex-row sm:items-end items-center gap-2 sm:gap-4">
 					<Select
 						label="Maze"
 						value={maze}
 						options={MAZES}
 						isDisabled={isDisabled}
-						onChange={e => {
+						onChange={(e) => {
 							handleGenerateMaze(e.target.value as MazeType);
 						}}
 					/>
@@ -105,7 +113,7 @@ export function Nav({
 						value={algorithm}
 						isDisabled={isDisabled}
 						options={PATHFINDING_ALGORITHMS}
-						onChange={e => {
+						onChange={(e) => {
 							setAlgorithm(e.target.value as AlgorithmType);
 						}}
 					/>
@@ -114,7 +122,7 @@ export function Nav({
 						value={speed}
 						options={SPEEDS}
 						isDisabled={isDisabled}
-						onChange={e => {
+						onChange={(e) => {
 							setSpeed(parseInt(e.target.value) as SpeedType);
 						}}
 					/>
