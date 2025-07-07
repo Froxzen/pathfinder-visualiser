@@ -72,7 +72,7 @@ export function Select({
 				<div
 					ref={menuRef}
 					tabIndex={-1}
-					className="absolute left-0 right-0 top-full z-50 w-full rounded-xl bg-white/20 backdrop-blur-2xl shadow-2xl border border-white/30 py-1 animate-fadeIn"
+					className="absolute left-0 right-0 top-full z-50 w-full rounded-xl bg-black/90 backdrop-blur-2xl shadow-2xl border border-white/30 py-1 animate-fadeIn"
 					role="listbox"
 					onKeyDown={handleKeyDown}
 				>
@@ -83,7 +83,7 @@ export function Select({
 							className={`w-full text-left px-4 py-1 text-base rounded-lg transition font-medium ${
 								value === option.value
 									? "bg-blue-400/30 text-blue-100"
-									: "hover:bg-white/30 text-gray-100"
+									: "hover:bg-black/80 text-gray-100"
 							}`}
 							onClick={(e) => {
 								onChange({ target: { value: option.value } });
