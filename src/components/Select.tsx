@@ -43,15 +43,15 @@ export function Select({
 
 	return (
 		<div className="flex flex-col min-w-[140px] w-full gap-1 relative">
-			<label className="text-xs font-semibold text-blue-200 ml-1 mb-0.5 tracking-wide drop-shadow-sm">
+			<label className="text-xs font-semibold text-canvas-muted ml-1 mb-0.5 tracking-wide uppercase">
 				{label}
 			</label>
 			<button
 				ref={buttonRef}
 				type="button"
 				disabled={isDisabled}
-				className={`flex items-center justify-between w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 text-base text-gray-100 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400/60 focus:border-blue-400 transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/20 ${
-					open ? "ring-2 ring-blue-400/60 border-blue-400" : ""
+				className={`flex items-center justify-between w-full bg-canvas-surface border border-canvas-border rounded-lg px-4 py-2 text-base text-canvas-text focus:outline-none focus:ring-2 focus:ring-canvas-accent/40 focus:border-canvas-accent-dim transition disabled:opacity-50 disabled:cursor-not-allowed hover:border-canvas-accent-dim/70 ${
+					open ? "ring-2 ring-canvas-accent/40 border-canvas-accent-dim" : ""
 				}`}
 				onClick={() => setOpen((v) => !v)}
 				onKeyDown={handleKeyDown}
@@ -72,7 +72,7 @@ export function Select({
 				<div
 					ref={menuRef}
 					tabIndex={-1}
-					className="absolute left-0 right-0 top-full z-50 w-full rounded-xl bg-black/90 backdrop-blur-2xl shadow-2xl border border-white/30 py-1 animate-fadeIn"
+					className="absolute left-0 right-0 top-full z-50 w-full rounded-lg bg-canvas-elevated shadow-xl border border-canvas-border py-1 animate-fadeIn"
 					role="listbox"
 					onKeyDown={handleKeyDown}
 				>
@@ -80,10 +80,10 @@ export function Select({
 						<button
 							key={option.value}
 							type="button"
-							className={`w-full text-left px-4 py-1 text-sm sm:text-base rounded-lg transition font-medium ${
+							className={`w-full text-left px-4 py-1 text-sm sm:text-base rounded-md transition font-medium ${
 								value === option.value
-									? "bg-blue-400/30 text-blue-100"
-									: "hover:bg-blue-500/40 hover:text-blue-100 text-gray-100"
+									? "bg-canvas-accent/15 text-canvas-accent"
+									: "hover:bg-canvas-border text-canvas-text"
 							}`}
 							onClick={(_) => {
 								onChange({ target: { value: option.value } });

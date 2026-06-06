@@ -1,5 +1,3 @@
-import { transform } from "typescript";
-
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -12,41 +10,63 @@ export default {
 			"2xl": "2000px",
 		},
 		extend: {
+			colors: {
+				canvas: {
+					deep: "#0b0f14",
+					surface: "#131a22",
+					elevated: "#1a2332",
+					border: "#2d3a4d",
+					text: "#e2e8f0",
+					muted: "#8899ad",
+					accent: "#22d3ee",
+					"accent-dim": "#0891b2",
+					start: "#10b981",
+					end: "#f43f5e",
+					traversed: "#38bdf8",
+					path: "#facc15",
+					wall: "#475569",
+					cell: "#151c26",
+				},
+			},
+			fontFamily: {
+				display: ["Syne", "system-ui", "sans-serif"],
+				sans: ["DM Sans", "system-ui", "sans-serif"],
+			},
 			keyframes: {
 				traversed: {
 					"0%": {
 						transform: "scale(0.3)",
-						backgroundColor: "#9333eabf",
+						backgroundColor: "#1a2332bf",
 						borderRadius: "100%",
 					},
 					"50%": {
-						backgroundColor: "#4f46e5bf",
+						backgroundColor: "#0e7490bf",
 					},
 					"75%": {
 						transform: "scale(1.2)",
-						backgroundColor: "#3b82f6bf",
+						backgroundColor: "#38bdf8bf",
 					},
 					"100%": {
 						transform: "scale(1)",
-						backgroundColor: "#22d3ee",
+						backgroundColor: "#38bdf8",
 					},
 				},
 				path: {
 					"0%": {
 						transform: "scale(0.3)",
-						backgroundColor: "#e11d48bf",
+						backgroundColor: "#ca8a04bf",
 						borderRadius: "100%",
 					},
 					"50%": {
-						backgroundColor: "#ea580cbf",
+						backgroundColor: "#eab308bf",
 					},
 					"75%": {
 						transform: "scale(1.2)",
-						backgroundColor: "#fb923cbf",
+						backgroundColor: "#facc15bf",
 					},
 					"90%": {
 						transform: "scale(0.8)",
-						backgroundColor: "#fbe68a",
+						backgroundColor: "#fde047",
 					},
 					"100%": {
 						transform: "scale(1)",

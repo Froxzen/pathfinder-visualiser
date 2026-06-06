@@ -28,12 +28,13 @@ export const END_TILE_CONFIGURATION = {
 };
 
 export const TILE_STYLE =
-	"2xl:w-[32px] 2xl:h-[32px] xl:w-[24px] xl:h-[24px] lg:w-[17px] lg:h-[17px] md:w-[15px] md:h-[15px] xs:w-[8px] xs:h-[8px] w-[7px] h-[7px] border-t border-r border-white/10";
-export const TRAVERSED_TILE_STYLE = TILE_STYLE + " bg-cyan-500";
-export const START_TILE_STYLE = TILE_STYLE + " bg-green-500";
-export const END_TILE_STYLE = TILE_STYLE + " bg-red-600";
-export const WALL_TILE_STYLE = TILE_STYLE + " bg-gray-200";
-export const PATH_TILE_STYLE = TILE_STYLE + " bg-green-600";
+	"2xl:w-[32px] 2xl:h-[32px] xl:w-[24px] xl:h-[24px] lg:w-[17px] lg:h-[17px] md:w-[15px] md:h-[15px] xs:w-[8px] xs:h-[8px] w-[7px] h-[7px] border-t border-r border-canvas-border/50";
+export const EMPTY_TILE_STYLE = TILE_STYLE + " bg-canvas-cell";
+export const TRAVERSED_TILE_STYLE = TILE_STYLE + " bg-canvas-traversed";
+export const START_TILE_STYLE = TILE_STYLE + " bg-canvas-start";
+export const END_TILE_STYLE = TILE_STYLE + " bg-canvas-end";
+export const WALL_TILE_STYLE = TILE_STYLE + " bg-canvas-wall";
+export const PATH_TILE_STYLE = TILE_STYLE + " bg-canvas-path";
 
 export const MAZES: MazeSelectType[] = [
 	{ name: "No Maze", value: "NONE" },

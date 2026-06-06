@@ -102,10 +102,10 @@ export function Nav({
 
 	return (
 		<div className="w-full flex items-center justify-center py-4 px-2 sm:px-6 z-20">
-			<div className="w-full max-w-4xl flex items-center justify-between bg-white/5 backdrop-blur-md rounded-2xl shadow-lg border border-white/10 px-4 py-3 gap-4">
+			<div className="w-full max-w-4xl flex items-center justify-between bg-canvas-elevated rounded-xl border border-canvas-border px-4 py-3 gap-4">
 				<div className="flex items-center gap-3">
 					<div className="relative flex items-center justify-center">
-						<div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-400 via-blue-400 to-blue-600 p-0.5 flex items-center justify-center">
+						<div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-canvas-accent p-0.5 flex items-center justify-center shadow-[0_0_14px_rgba(34,211,238,0.35)]">
 							<img
 								src={locationIcon}
 								alt="Location Icon"
@@ -113,7 +113,7 @@ export function Nav({
 							/>
 						</div>
 					</div>
-					<h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm tracking-tight">
+					<h1 className="font-display text-2xl sm:text-3xl font-bold text-canvas-text tracking-tight">
 						Pathfinding Visualizer
 					</h1>
 				</div>

@@ -1,10 +1,10 @@
 import { twMerge } from "tailwind-merge";
 import {
 	END_TILE_STYLE,
+	EMPTY_TILE_STYLE,
 	MAX_ROWS,
 	PATH_TILE_STYLE,
 	START_TILE_STYLE,
-	TILE_STYLE,
 	TRAVERSED_TILE_STYLE,
 	WALL_TILE_STYLE,
 } from "../utils/constants";
@@ -49,7 +49,7 @@ export function Tile({
 	} else if (isTraversed) {
 		tileTypeStyle = TRAVERSED_TILE_STYLE;
 	} else {
-		tileTypeStyle = TILE_STYLE;
+		tileTypeStyle = EMPTY_TILE_STYLE;
 	}
 
 	const borderStyle =

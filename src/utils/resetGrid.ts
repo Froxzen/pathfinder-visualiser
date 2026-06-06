@@ -1,9 +1,9 @@
 import {
 	END_TILE_CONFIGURATION,
+	EMPTY_TILE_STYLE,
 	MAX_COLS,
 	MAX_ROWS,
 	START_TILE_CONFIGURATION,
-	TILE_STYLE,
 } from "./constants";
 import { isEqual } from "./helpers";
 import { GridType, TileType } from "./types";
@@ -32,7 +32,7 @@ export const resetGrid = ({
 				);
 
 				if (tileElement) {
-					tileElement.className = TILE_STYLE;
+					tileElement.className = EMPTY_TILE_STYLE;
 				}
 
 				if (tile.row === MAX_ROWS - 1) {

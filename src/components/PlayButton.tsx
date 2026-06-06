@@ -16,11 +16,11 @@ export function PlayButton({
 			disabled={isDisabled}
 			onClick={handlerRunVisualiser}
 			aria-label={isGraphVisualised ? "Reset" : "Start Visualisation"}
-			className={`disabled:pointer-events-none disabled:opacity-50 transition-all duration-200 rounded-full p-4 shadow-xl border-none focus:outline-none focus:ring-4 focus:ring-blue-400/50
+			className={`disabled:pointer-events-none disabled:opacity-50 transition-all duration-200 rounded-full p-4 shadow-lg border border-canvas-accent-dim/50 focus:outline-none focus:ring-2 focus:ring-canvas-accent/50 text-canvas-deep
 				${
 					!isDisabled
-						? "bg-gradient-to-tr from-purple-400 via-blue-400 to-blue-600 hover:from-purple-300 hover:to-blue-400 hover:shadow-blue-400/30 hover:scale-105"
-						: "bg-gray-700"
+						? "bg-canvas-accent hover:brightness-110 hover:shadow-[0_0_18px_rgba(34,211,238,0.4)]"
+						: "bg-canvas-border"
 				}
 			`}
 		>
