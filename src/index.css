@@ -27,10 +27,3 @@ body {
 	overflow-y: hidden;
 }
 
-.bg-grid {
-	background-color: #0b0f14;
-	background-image:
-		linear-gradient(rgba(45, 58, 77, 0.45) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(45, 58, 77, 0.45) 1px, transparent 1px);
-	background-size: 32px 32px;
-}

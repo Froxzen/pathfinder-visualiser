@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { twMerge } from "tailwind-merge";
 
 export function Select({
 	value,
@@ -10,7 +11,7 @@ export function Select({
 }: {
 	value: string | number;
 	label: string;
-	onChange: (e: any) => void;
+	onChange: (e: { target: { value: string | number } }) => void;
 	options: { value: string | number; name: string }[];
 	isDisabled?: boolean;
 }) {
@@ -18,7 +19,6 @@ export function Select({
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
 
-	// Close dropdown on outside click
 	useEffect(() => {
 		function handleClick(e: MouseEvent) {
 			if (
@@ -34,7 +34,6 @@ export function Select({
 		return () => document.removeEventListener("mousedown", handleClick);
 	}, [open]);
 
-	// Keyboard accessibility
 	function handleKeyDown(e: React.KeyboardEvent) {
 		if (e.key === "Escape") setOpen(false);
 	}
@@ -42,70 +41,91 @@ export function Select({
 	const selected = options.find((o) => o.value === value);
 
 	return (
-		<div className="flex flex-col min-w-[140px] w-full gap-1 relative">
-			<label className="text-xs font-semibold text-canvas-muted ml-1 mb-0.5 tracking-wide uppercase">
+		<div className="flex flex-col min-w-[148px] w-full gap-1.5 relative z-30">
+			<label className="text-[10px] font-semibold text-canvas-muted/90 ml-0.5 tracking-[0.14em] uppercase select-none">
 				{label}
 			</label>
 			<button
 				ref={buttonRef}
 				type="button"
 				disabled={isDisabled}
-				className={`flex items-center justify-between w-full bg-canvas-surface border border-canvas-border rounded-lg px-4 py-2 text-base text-canvas-text focus:outline-none focus:ring-2 focus:ring-canvas-accent/40 focus:border-canvas-accent-dim transition disabled:opacity-50 disabled:cursor-not-allowed hover:border-canvas-accent-dim/70 ${
-					open ? "ring-2 ring-canvas-accent/40 border-canvas-accent-dim" : ""
-				}`}
-				onClick={() => setOpen((v) => !v)}
+				className={twMerge(
+					"group flex items-center justify-between w-full rounded-lg border px-3.5 py-2 text-sm font-medium text-canvas-text transition-all duration-200",
+					"bg-canvas-surface border-canvas-border shadow-select-trigger",
+					"hover:border-canvas-accent-dim/60 hover:bg-[#161f2c]",
+					"focus:outline-none focus-visible:ring-2 focus-visible:ring-canvas-accent/30",
+					"disabled:opacity-45 disabled:cursor-not-allowed disabled:hover:border-canvas-border",
+					open &&
+						"border-canvas-accent/50 bg-[#161f2c] shadow-select-trigger-open"
+				)}
+				onClick={() => !isDisabled && setOpen((v) => !v)}
 				onKeyDown={handleKeyDown}
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				aria-label={label}
 			>
-				<span className="truncate text-left">
+				<span className="truncate text-left pr-2">
 					{selected ? selected.name : "Select..."}
 				</span>
-				<FiChevronDown
-					className={`ml-2 text-xl transition-transform ${
-						open ? "rotate-180" : ""
-					}`}
-				/>
+				<span
+					className={twMerge(
+						"flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-canvas-border/80 bg-canvas-deep/60 text-canvas-muted transition-colors duration-200",
+						"group-hover:border-canvas-accent-dim/50 group-hover:text-canvas-accent",
+						open && "border-canvas-accent/40 text-canvas-accent"
+					)}
+				>
+					<FiChevronDown
+						className={twMerge(
+							"h-3.5 w-3.5 transition-transform duration-200",
+							open && "rotate-180"
+						)}
+					/>
+				</span>
 			</button>
 			{open && !isDisabled && (
 				<div
 					ref={menuRef}
 					tabIndex={-1}
-					className="absolute left-0 right-0 top-full z-50 w-full rounded-lg bg-canvas-elevated shadow-xl border border-canvas-border py-1 animate-fadeIn"
+					className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 overflow-hidden rounded-lg border border-canvas-border/90 bg-canvas-elevated/95 shadow-dropdown-panel backdrop-blur-md animate-dropdown-in"
 					role="listbox"
 					onKeyDown={handleKeyDown}
 				>
-					{options.map((option) => (
-						<button
-							key={option.value}
-							type="button"
-							className={`w-full text-left px-4 py-1 text-sm sm:text-base rounded-md transition font-medium ${
-								value === option.value
-									? "bg-canvas-accent/15 text-canvas-accent"
-									: "hover:bg-canvas-border text-canvas-text"
-							}`}
-							onClick={(_) => {
-								onChange({ target: { value: option.value } });
-								setOpen(false);
-							}}
-							role="option"
-							aria-selected={value === option.value}
-						>
-							{option.name}
-						</button>
-					))}
+					<div className="h-px bg-gradient-to-r from-transparent via-canvas-accent/50 to-transparent" />
+					<ul className="p-1.5">
+						{options.map((option) => {
+							const isSelected = value === option.value;
+							return (
+								<li key={option.value}>
+									<button
+										type="button"
+										className={twMerge(
+											"relative flex w-full items-center rounded-md px-3 py-2 text-left text-sm transition-colors duration-150",
+											isSelected
+												? "bg-canvas-accent/10 text-canvas-text font-medium"
+												: "text-canvas-muted hover:bg-canvas-border/40 hover:text-canvas-text"
+										)}
+										onClick={() => {
+											onChange({
+												target: { value: option.value },
+											});
+											setOpen(false);
+										}}
+										role="option"
+										aria-selected={isSelected}
+									>
+										{isSelected && (
+											<span className="absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full bg-canvas-accent shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+										)}
+										<span className={isSelected ? "pl-2" : ""}>
+											{option.name}
+										</span>
+									</button>
+								</li>
+							);
+						})}
+					</ul>
 				</div>
 			)}
-			<style>{`
-				.animate-fadeIn {
-					animation: fadeInDropdown 0.18s cubic-bezier(.4,0,.2,1);
-				}
-				@keyframes fadeInDropdown {
-					from { opacity: 0; transform: translateY(-8px) scale(0.98); }
-					to { opacity: 1; transform: none; }
-				}
-			`}</style>
 		</div>
 	);
 }

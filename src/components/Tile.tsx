@@ -16,6 +16,7 @@ interface MouseFunction {
 export function Tile({
 	row,
 	col,
+	tileSize,
 	isStart,
 	isEnd,
 	isTraversed,
@@ -27,6 +28,7 @@ export function Tile({
 }: {
 	row: number;
 	col: number;
+	tileSize: number;
 	isStart: boolean;
 	isEnd: boolean;
 	isTraversed: boolean;
@@ -59,6 +61,7 @@ export function Tile({
 	return (
 		<div
 			className={twMerge(tileTypeStyle, borderStyle, edgeStyle)}
+			style={{ width: tileSize, height: tileSize }}
 			id={`${row}-${col}`}
 			onMouseDown={() => handleMouseDown(row, col)}
 			onMouseUp={() => handleMouseUp(row, col)}

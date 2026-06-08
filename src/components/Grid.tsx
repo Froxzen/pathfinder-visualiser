@@ -1,4 +1,3 @@
-import { twMerge } from "tailwind-merge";
 import { usePathfinding } from "../hooks/usePathfinding";
 import { MAX_COLS, MAX_ROWS } from "../utils/constants";
 import { Tile } from "./Tile";
@@ -6,8 +5,10 @@ import { MutableRefObject, useState } from "react";
 import { checkIfStartOrEnd, createNewGrid } from "../utils/helpers";
 
 export function Grid({
+	tileSize,
 	isVisualisationRunningRef,
 }: {
+	tileSize: number;
 	isVisualisationRunningRef: MutableRefObject<boolean>;
 }) {
 	const { grid, setGrid } = usePathfinding();
@@ -45,17 +46,11 @@ export function Grid({
 
 	return (
 		<div
-			className={twMerge(
-				"flex items-center flex-col justify-center border border-canvas-border rounded-sm mt-2",
-				`lg:min-h-[${MAX_ROWS * 17}px] 
-                md:min-h-[${MAX_ROWS * 15}px] 
-                xs:min-h-[${MAX_ROWS * 8}px]
-                min-h-[${MAX_ROWS * 7}px]`,
-				`lg:w-[${MAX_COLS * 17}px] 
-                md:min-h-[${MAX_COLS * 15}px] 
-                xs:min-h-[${MAX_COLS * 8}px]
-                min-h-[${MAX_COLS * 7}px]`
-			)}
+			className="flex flex-col border border-canvas-border rounded-sm"
+			style={{
+				width: MAX_COLS * tileSize,
+				height: MAX_ROWS * tileSize,
+			}}
 		>
 			{grid.map((r, rowIndex) => (
 				<div key={rowIndex} className="flex">
@@ -74,6 +69,7 @@ export function Grid({
 								key={tileIndex}
 								row={tile.row}
 								col={tile.col}
+								tileSize={tileSize}
 								isEnd={isEnd}
 								isStart={isStart}
 								isPath={isPath}

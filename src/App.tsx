@@ -4,26 +4,33 @@ import { PathfindingProvider } from "./context/PathfindingContext";
 import { SpeedProvider } from "./context/SpeedContext";
 import { TileProvider } from "./context/TileContext";
 import { Nav } from "./components/Nav";
+import { useTileSize } from "./hooks/useTileSize";
 
 function App() {
 	const isVisualisationRunningRef = useRef(false);
+	const gridAreaRef = useRef<HTMLDivElement>(null);
+	const tileSize = useTileSize(gridAreaRef);
 
 	return (
 		<PathfindingProvider>
 			<TileProvider>
 				<SpeedProvider>
-					<div className="min-h-screen w-full flex flex-col items-center justify-start bg-grid relative overflow-x-hidden overflow-y-hidden">
-						<div className="relative z-10 w-full max-w-6xl px-2 sm:px-6 flex flex-col items-center">
+					<div className="h-screen w-full flex flex-col bg-canvas-deep overflow-hidden px-2 sm:px-6">
 						<Nav
 							isVisualisationRunningRef={
 								isVisualisationRunningRef
 							}
 						/>
-						<Grid
-							isVisualisationRunningRef={
-								isVisualisationRunningRef
-							}
-						/>
+						<div
+							ref={gridAreaRef}
+							className="flex-1 min-h-0 w-full flex items-center justify-center"
+						>
+							<Grid
+								tileSize={tileSize}
+								isVisualisationRunningRef={
+									isVisualisationRunningRef
+								}
+							/>
 						</div>
 					</div>
 				</SpeedProvider>
@@ -33,4 +40,3 @@ function App() {
 }
 
 export default App;
-// 46:45

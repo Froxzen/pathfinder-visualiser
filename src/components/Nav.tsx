@@ -101,8 +101,8 @@ export function Nav({
 	};
 
 	return (
-		<div className="w-full flex items-center justify-center py-4 px-2 sm:px-6 z-20">
-			<div className="w-full max-w-4xl flex items-center justify-between bg-canvas-elevated rounded-xl border border-canvas-border px-4 py-3 gap-4">
+		<div className="w-full flex items-center justify-center py-4 shrink-0 z-20 overflow-visible">
+			<div className="w-full max-w-4xl flex items-center justify-between bg-canvas-elevated rounded-xl border border-canvas-border px-4 py-3 gap-4 overflow-visible">
 				<div className="flex items-center gap-3">
 					<div className="relative flex items-center justify-center">
 						<div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-canvas-accent p-0.5 flex items-center justify-center shadow-[0_0_14px_rgba(34,211,238,0.35)]">
@@ -117,7 +117,7 @@ export function Nav({
 						Pathfinding Visualizer
 					</h1>
 				</div>
-				<div className="flex flex-col sm:flex-row sm:items-end items-center gap-2 sm:gap-4">
+				<div className="flex flex-col sm:flex-row sm:items-end items-center gap-2 sm:gap-4 overflow-visible">
 					<Select
 						label="Maze"
 						value={maze}
